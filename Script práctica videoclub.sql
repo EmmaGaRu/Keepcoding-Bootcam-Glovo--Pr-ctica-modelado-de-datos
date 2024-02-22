@@ -545,7 +545,7 @@ INSERT INTO tmp_videoclub (id_copia,fecha_alquiler_texto,dni,nombre,apellido_1,a
 
 
 CREATE TABLE videoclub.direcciones (
-    id_direccion serial PRIMARY KEY,
+    id_direccion serial PRIMARY key NOT NULL,
     codigo_postal varchar(5),
     calle varchar(50),
     numero varchar(5),
@@ -554,7 +554,7 @@ CREATE TABLE videoclub.direcciones (
 
 
 CREATE TABLE videoclub.socios (
-    id_socio serial PRIMARY KEY,
+    id_socio serial PRIMARY key NOT NULL,
     nombre varchar(50) NOT NULL,
     apellido_1 varchar(50) NOT NULL,
     apellido_2 varchar(50),
@@ -567,7 +567,7 @@ CREATE TABLE videoclub.socios (
 
 
 CREATE TABLE videoclub.peliculas (
-    id_pelicula serial PRIMARY KEY,
+    id_pelicula serial PRIMARY key NOT NULL,
     titulo varchar(80) NOT NULL,
     genero varchar(50) NOT NULL,
     sinopsis text NOT NULL,
@@ -576,9 +576,9 @@ CREATE TABLE videoclub.peliculas (
 
 
 CREATE TABLE videoclub.prestamos (
-    id_prestamo serial PRIMARY KEY,
-    id_pelicula integer REFERENCES videoclub.peliculas(id_pelicula),
-    id_socio integer REFERENCES videoclub.socios(id_socio),
+    id_prestamo serial PRIMARY key NOT NULL,
+    id_pelicula integer REFERENCES videoclub.peliculas(id_pelicula) NOT NULL,
+    id_socio integer REFERENCES videoclub.socios(id_socio) NOT NULL,
     fecha_alquiler date NOT NULL,
     fecha_devolucion date
 );
